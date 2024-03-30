@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useUser } from '@/context/UserProvider'
-import { createUser } from '@/lib/actions/user.action'
+import { createUser } from '@/lib/actions/user/create'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'

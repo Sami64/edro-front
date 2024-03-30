@@ -19,7 +19,7 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { useUser } from '@/context/UserProvider'
-import { createQuote } from '@/lib/actions/quote.action'
+import { createQuote } from '@/lib/actions/quotes/create'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'

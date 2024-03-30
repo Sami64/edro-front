@@ -1,6 +1,6 @@
 import QuoteCard from '@/components/cards/QuoteCard'
 import Navbar from '@/components/navbar/Navbar'
-import { getQuotes } from '@/lib/actions/quote.action'
+import { getQuotes } from '@/lib/actions/quotes/get'
 import { QuoteIcon } from 'lucide-react'
 
 export default async function Home() {
@@ -11,10 +11,10 @@ export default async function Home() {
 			<Navbar />
 			<div className="w-full px-12 pb-5">
 				<div className="flex items-start justify-center italic">
-					<p className='flex text-xl font-semibold text-slate-500'>
+					<p className="flex text-xl font-semibold text-slate-500">
 						Where words connect. Discover quotes that uplift, challenge, and
 						make you think.
-						<QuoteIcon className='text-primary h-5'/>
+						<QuoteIcon className="text-primary h-5" />
 					</p>
 				</div>
 				<section className="flex flex-wrap gap-1 mt-8 w-full">

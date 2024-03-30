@@ -1,8 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+### Pre-requisites
+
+Node.js and a package manager (npm, yarn, pnpm, or bun) installed.
+Choose one of the following commands based on your preferred package manager:
+
+#### 1. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+#### 2. Spin Up the Fake Server
+
+After installing dependencies and starting the dev server
+Open a separate terminal window.
+
+Run the following command:
+
+```Bash
+npx json-server db.json
+```
+
+This will typically start the server on port 3000 (<http://localhost:3000>).
+
+#### 3. Start the Development Server
 
 ```bash
 npm run dev
@@ -14,23 +42,14 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 4. Configure Environment Variable
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a file named .env.local at the root of your project.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Add the following line, replacing the placeholder with the actual URL of your fake server:
 
-## Learn More
+HOST=<http://localhost:3000>
 
-To learn more about Next.js, take a look at the following resources:
+Now your application should be able to interact with the fake server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+All fake server data will be stored in db.json found in the root of the directory
