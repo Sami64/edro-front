@@ -19,7 +19,6 @@ bun install
 
 #### 2. Spin Up the Fake Server
 
-After installing dependencies and starting the dev server
 Open a separate terminal window.
 
 Run the following command:
