@@ -1,5 +1,114 @@
 {
-  "quotes": [],
+  "quotes": [
+    {
+      "id": "4cb5",
+      "text": "my awesome quote",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T12:56:15.917Z"
+    },
+    {
+      "id": "1441",
+      "text": "another quote from sami khaeee",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:16:21.696Z"
+    },
+    {
+      "id": "b581",
+      "text": "third quote",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:21:16.637Z"
+    },
+    {
+      "id": "3d19",
+      "text": "the forth",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:21:30.867Z"
+    },
+    {
+      "id": "90fa",
+      "text": "lord eigth",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:23:15.269Z"
+    },
+    {
+      "id": "c92f",
+      "text": "lord eith",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:24:29.029Z"
+    },
+    {
+      "id": "2c5a",
+      "text": "asdsd",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:25:40.827Z"
+    },
+    {
+      "id": "adbd",
+      "text": "in the night garden",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:26:46.861Z"
+    },
+    {
+      "id": "08e7",
+      "text": "in the quote",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:27:42.966Z"
+    },
+    {
+      "id": "ccac",
+      "text": "ahaisasd",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:28:30.067Z"
+    },
+    {
+      "id": "eacf",
+      "text": "the 11th",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:28:56.093Z"
+    },
+    {
+      "id": "e024",
+      "text": "asdeqw",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T13:29:52.077Z"
+    }
+  ],
   "users": [
     {
       "id": "a3fa",

@@ -1,6 +1,7 @@
 'use server'
 import { Quote } from './../../types/index.d'
 
+import { revalidatePath } from 'next/cache'
 import { validateQuote } from '../validations'
 import {
 	CreateQuoteParams,
@@ -42,6 +43,7 @@ export const createQuote = async (params: CreateQuoteParams) => {
 
 		// Validation Quote Response
 		validateQuote(data)
+		revalidatePath('/')
 
 		return data as Quote
 	} catch (err) {}
@@ -84,7 +86,10 @@ export const getQuote = async (params: GetQuoteParams) => {
 
 export const getQuotes = async (): Promise<Quote[]> => {
 	try {
-		const result = await fetch(`${process.env.HOST}/quotes`)
+		const result = await fetch(`${process.env.HOST}/quotes`, {
+			method: 'GET',
+			// cache: 'no-store',
+		})
 
 		if (!result.ok) {
 			throw new Error('Failed to fetch data')

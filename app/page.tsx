@@ -5,9 +5,9 @@ export default async function Home() {
 	const quotes = await getQuotes()
 
 	return (
-		<main className='relative'>
+		<main className="relative">
 			<Navbar />
-			<div className='px-12'>Quotes Length {quotes.length}</div>
+			<div className="px-12">Quotes Length {quotes.length}</div>
 		</main>
 	)
 }

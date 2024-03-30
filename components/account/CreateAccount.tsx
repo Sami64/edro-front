@@ -23,6 +23,7 @@ import { Input } from '@/components/ui/input'
 import { createUser } from '@/lib/actions/user.action'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useToast } from '../ui/use-toast'
@@ -36,6 +37,7 @@ const formSchema = z.object({
 export function CreateAccount() {
 	const router = useRouter()
 	const { toast } = useToast()
+	const [loading, setIsLoading] = useState(false)
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -44,6 +46,7 @@ export function CreateAccount() {
 	})
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
+		setIsLoading(true)
 		try {
 			const result = await createUser({ username: values.username })
 
@@ -60,6 +63,8 @@ export function CreateAccount() {
 				title: 'Uh oh! Something went wrong.',
 				description: 'There was a problem with creating your account',
 			})
+		} finally {
+			setIsLoading(false)
 		}
 	}
 
@@ -99,7 +104,11 @@ export function CreateAccount() {
 							)}
 						/>
 						<DialogFooter>
-							<Button type="submit">Create</Button>
+							<Button
+								disabled={loading}
+								type="submit">
+								{loading ? 'Creating...' : 'Create Profile'}
+							</Button>
 						</DialogFooter>
 					</form>
 				</Form>

@@ -1,6 +1,7 @@
 'use server'
 
 import { User } from '@/types'
+import { revalidatePath } from 'next/cache'
 import { CreateUserParams, GetUserParams } from './shared.types'
 
 export const getUser = async (params: GetUserParams): Promise<User> => {
@@ -63,6 +64,7 @@ export const createUser = async (params: CreateUserParams): Promise<User> => {
 			throw new Error('Invalid User object')
 		}
 
+		revalidatePath('/')
 		return data as User
 	} catch (err) {
 		if (err instanceof TypeError) {
