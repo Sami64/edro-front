@@ -18,9 +18,9 @@ import {
 	FormItem,
 	FormMessage,
 } from '@/components/ui/form'
+import { useUser } from '@/context/UserProvider'
 import { createQuote } from '@/lib/actions/quote.action'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -35,8 +35,8 @@ const formSchema = z.object({
 
 export function AddQuote() {
 	const { toast } = useToast()
+	const { user } = useUser()
 	const [loading, setIsLoading] = useState(false)
-	const router = useRouter()
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -47,10 +47,10 @@ export function AddQuote() {
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		setIsLoading(true)
 		try {
-			const result = await createQuote({
+			await createQuote({
 				text: values.content,
 				createdAt: new Date(Date.now()),
-				userId: JSON.parse(localStorage.getItem('user') as string).id,
+				userId: user?.id as string,
 			})
 
 			form.reset()
@@ -74,7 +74,7 @@ export function AddQuote() {
 			<DialogTrigger asChild>
 				<Button
 					variant="outline"
-					className="border border-primary">
+					className="border border-primary text-slate-500 font-bold">
 					Add Quote
 				</Button>
 			</DialogTrigger>

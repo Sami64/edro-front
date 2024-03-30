@@ -3,6 +3,7 @@ import { Quote } from './../../types/index.d'
 
 import { revalidatePath } from 'next/cache'
 import { validateQuote } from '../validations'
+import { generateCover } from './image.generation.action'
 import {
 	CreateQuoteParams,
 	GetQuoteParams,
@@ -21,10 +22,13 @@ export const createQuote = async (params: CreateQuoteParams) => {
 			throw new Error('User not found, Please create your account first.')
 		}
 
+		const cover = await generateCover({ text })
+
 		const body: Omit<Quote, 'id'> = {
 			text,
 			user,
 			createdAt,
+			cover: cover ?? '',
 		}
 
 		const result = await fetch(`${process.env.HOST}/quotes`, {
@@ -106,6 +110,14 @@ export const getQuotes = async (): Promise<Quote[]> => {
 			data.forEach((item) => {
 				validateQuote(item)
 			})
+
+		data.sort((quoteA, quoteB) => {
+			const dateA = new Date(quoteA.createdAt)
+			const dateB = new Date(quoteB.createdAt)
+
+			// For descending order (newest to oldest):
+			return dateB.getTime() - dateA.getTime()
+		})
 
 		return data as Quote[]
 	} catch (err) {

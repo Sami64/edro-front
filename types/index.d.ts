@@ -3,6 +3,7 @@ export interface Quote {
     text: string
     user: User
     createdAt: Date
+    cover: string
 }
 
 export interface User {

@@ -107,12 +107,56 @@
         "username": "smashbros54"
       },
       "createdAt": "2024-03-30T13:29:52.077Z"
+    },
+    {
+      "id": "b1f2",
+      "text": "the pen is mightier than the sword",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T15:14:14.373Z",
+      "cover": ""
+    },
+    {
+      "id": "c536",
+      "text": "silence means concern",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T15:15:54.315Z",
+      "cover": ""
+    },
+    {
+      "id": "dff7",
+      "text": "wings cover the children",
+      "user": {
+        "id": "a3fa",
+        "username": "smashbros54"
+      },
+      "createdAt": "2024-03-30T15:17:11.071Z",
+      "cover": "https://replicate.delivery/pbxt/3BGJmedNIhRXYq32EUDg7Iy86F2pPtPu6vd3Y4eLYntf37KlA/ai.png"
+    },
+    {
+      "id": "16e2",
+      "text": "by justkode G O D",
+      "user": {
+        "id": "51ef",
+        "username": "justkode"
+      },
+      "createdAt": "2024-03-30T16:48:31.965Z",
+      "cover": "https://replicate.delivery/pbxt/4aOyFxVoIeRoeErdWCrUEDPlRbIqSK4Hf0vekLLZYIvWG9VKB/ai.png"
     }
   ],
   "users": [
     {
       "id": "a3fa",
       "username": "smashbros54"
+    },
+    {
+      "id": "51ef",
+      "username": "justkode"
     }
   ]
 }

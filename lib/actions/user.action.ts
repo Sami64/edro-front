@@ -6,14 +6,27 @@ import { CreateUserParams, GetUserParams } from './shared.types'
 
 export const getUser = async (params: GetUserParams): Promise<User> => {
 	try {
-		const { id } = params
-		const result = await fetch(`${process.env.HOST}/users/${id}`)
+		const { id, username } = params
+
+		if (!id && !username) {
+			throw new Error('Invalid params: Expected either id or username')
+		}
+
+		let result
+
+		if (username != null)
+			result = await fetch(`${process.env.HOST}/users?username=${username}`)
+		else result = await fetch(`${process.env.HOST}/users/${id}`)
 
 		if (!result.ok) {
 			throw new Error('Failed to fetch data')
 		}
 
 		const data = await result.json()
+
+		if (username) {
+			return data[0] as User
+		}
 
 		// Validation Logic
 		if (typeof data !== 'object') {
@@ -41,6 +54,14 @@ export const getUser = async (params: GetUserParams): Promise<User> => {
 export const createUser = async (params: CreateUserParams): Promise<User> => {
 	try {
 		const { username } = params
+
+		const user = await getUser({ username: username })
+
+		if (user) {
+			revalidatePath('/')
+			return user
+		}
+
 		const result = await fetch(`${process.env.HOST}/users`, {
 			method: 'POST',
 			body: JSON.stringify({ username }),

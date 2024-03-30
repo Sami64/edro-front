@@ -20,9 +20,9 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { useUser } from '@/context/UserProvider'
 import { createUser } from '@/lib/actions/user.action'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -35,7 +35,7 @@ const formSchema = z.object({
 })
 
 export function CreateAccount() {
-	const router = useRouter()
+	const { setUser } = useUser()
 	const { toast } = useToast()
 	const [loading, setIsLoading] = useState(false)
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -50,18 +50,20 @@ export function CreateAccount() {
 		try {
 			const result = await createUser({ username: values.username })
 
-			localStorage.setItem('user', JSON.stringify(result))
-			router.refresh()
+			console.log('User Create Result', result)
+
+			setUser(result)
+
 			toast({
-				title: 'Profile created!',
-				description: 'Your account has been created successfully!',
+				title: 'Profile Access Granted!',
+				description: 'Access to your account has been granted successfully!',
 			})
 		} catch (err) {
 			console.error('Failed to create user:', err)
 			toast({
 				variant: 'destructive',
 				title: 'Uh oh! Something went wrong.',
-				description: 'There was a problem with creating your account',
+				description: 'There was a problem with accessing your account',
 			})
 		} finally {
 			setIsLoading(false)
@@ -71,13 +73,13 @@ export function CreateAccount() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button variant="outline">Create Profile</Button>
+				<Button variant="outline">Login/Create Profile</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[425px]">
 				<DialogHeader>
-					<DialogTitle>Create profile</DialogTitle>
+					<DialogTitle>Access profile</DialogTitle>
 					<DialogDescription>
-						Create your profile to enable you to add quotes!
+						Access your profile to enable you to add quotes!
 					</DialogDescription>
 				</DialogHeader>
 				<Form {...form}>
@@ -107,7 +109,7 @@ export function CreateAccount() {
 							<Button
 								disabled={loading}
 								type="submit">
-								{loading ? 'Creating...' : 'Create Profile'}
+								{loading ? 'Verifying...' : 'Create/Login'}
 							</Button>
 						</DialogFooter>
 					</form>

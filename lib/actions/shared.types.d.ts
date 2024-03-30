@@ -20,5 +20,10 @@ export interface CreateUserParams {
 }
 
 export interface GetUserParams {
-    id: string
+    id?: string
+    username?: string
+}
+
+export interface GenerateCoverParams {
+    text: string
 }
