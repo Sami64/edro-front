@@ -1,4 +1,9 @@
 {
-  "posts": [],
-  "users": []
+  "quotes": [],
+  "users": [
+    {
+      "id": "a3fa",
+      "username": "smashbros54"
+    }
+  ]
 }
